@@ -36,6 +36,11 @@ public class ReentrantFormController extends AbstractCommandController {
 	private final String ESUPSYMPA_WIDE_VIEW = "esupsympaWideView";
 	private final String ESUPSYMPA_NARROW_VIEW = "esupsympaNarrowView";
 	private final String ESUPSYMPA_MOBILE_VIEW = "esupsympaMobileView";
+	//Ajout uvhc responsive
+	private final String ESUPSYMPA_RESP_VIEW = "esupsympaResponsiveView";
+	//Fin ajout UVHC responsive
+	
+	
 	/* (non-Javadoc)
 	 * @see org.springframework.web.portlet.mvc.AbstractCommandController#handleRender(javax.portlet.RenderRequest, javax.portlet.RenderResponse, java.lang.Object, org.springframework.validation.BindException)
 	 */
@@ -63,17 +68,24 @@ public class ReentrantFormController extends AbstractCommandController {
 		// Trigger rendering of the specified view, using the final model.
 		//return new ModelAndView(getViewName(), model);
 		
-	    if(userAgentInspector.isMobile(request)) {
-	    	
-			return new ModelAndView(ESUPSYMPA_MOBILE_VIEW, model);
-	    } else {
-	    	WindowState state = request.getWindowState();
-			if (WindowState.MAXIMIZED.equals(state)) {
-				return new ModelAndView(ESUPSYMPA_WIDE_VIEW, model);
-			} else {
-				return new ModelAndView(ESUPSYMPA_NARROW_VIEW, model);
-			}
-	    }		
+		/*
+		 * Modif UVHC pour responsive
+		 */
+//	    if(userAgentInspector.isMobile(request)) {
+//	    	
+//			return new ModelAndView(ESUPSYMPA_MOBILE_VIEW, model);
+//	    } else {
+//	    	WindowState state = request.getWindowState();
+//			if (WindowState.MAXIMIZED.equals(state)) {
+//				return new ModelAndView(ESUPSYMPA_WIDE_VIEW, model);
+//			} else {
+//				return new ModelAndView(ESUPSYMPA_NARROW_VIEW, model);
+//			}
+//	    }
+		return new ModelAndView(ESUPSYMPA_RESP_VIEW, model);
+	    /*
+	     * Fin modif UVHC pour responsive
+	     */
 	}
 	
 	@SuppressWarnings("unchecked")
